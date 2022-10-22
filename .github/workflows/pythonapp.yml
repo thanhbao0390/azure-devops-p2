@@ -17,9 +17,6 @@ jobs:
       run: |
         make install
     - name: Lint with pylint
-      uses: hadolint/hadolint-action@v2.0.0
-      with:
-        dockerfile: Dockerfile
       run: |
         make lint
     - name: Test with pytest
