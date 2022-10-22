@@ -13,14 +13,13 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: 3.7
-    - name: Set up hadolint
-      uses: hadolint/hadolint-action@v2.0.0
-      with:
-        dockerfile: Dockerfile
     - name: Install dependencies
       run: |
         make install
     - name: Lint with pylint
+      uses: hadolint/hadolint-action@v2.0.0
+      with:
+        dockerfile: Dockerfile
       run: |
         make lint
     - name: Test with pytest
