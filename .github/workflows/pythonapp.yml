@@ -1,6 +1,9 @@
-name: Python application test with Github Actions
+name: CI Python application test with Github Actions
 
-on: [push]
+on:
+  push:
+    branches:
+    - master
 
 jobs:
   build:
@@ -9,10 +12,14 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Set up Python 3.7
+    - name: Set up Python 3.5
       uses: actions/setup-python@v3
       with:
-        python-version: 3.7
+        python-version: 3.5
+    - name: Verify system environment
+      run: |
+        pwd
+        ls -la
     - name: Install dependencies
       run: |
         make install
