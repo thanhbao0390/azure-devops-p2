@@ -1,0 +1,53 @@
+1. Set up virtualenv:
+python3 -m venv ~/.flask-ml-azure
+source ~/.flask-ml-azure/bin/activate
+2. Run make install
+3. Create an app service and initially deploy your app in Cloud Shell:
+az webapp up -n <your-appservice>
+Create an app service and initially deploy your app in Cloud Shell
+4. Verify the deployed application works by browsing to the deployed url
+Go to https://<your-appservice>.azurewebsites.net/ and you should see the same output as in the screenshot below:
+
+
+Step 4: Perform Prediction
+Change the line in make_predict_azure_app.sh to match the deployed prediction:
+
+-X POST https://<yourappname>.azurewebsites.net:$PORT/predict
+A successful prediction will look like this:
+
+Successful prediction
+Step 5: Create an Azure DevOps project
+Next, we'll need to create an Azure DevOps project and connect to Azure. The screenshots below show the steps, but if you need to, you can also refer to the official documentation for more detail.
+
+
+
+
+(.flask-ml-azure) bao [ ~/azure-devops-p2 ]$ az webapp up -n azure-devops-p2
+Webapp 'azure-devops-p2' already exists. The command will deploy contents to the existing app.
+Creating AppServicePlan 'thanhbao0390_asp_2366' ...
+Updating runtime version from PYTHON|3.7 to PYTHON|3.10
+Waiting for runtime version to propagate ...
+Creating zip with contents of dir /home/bao/azure-devops-p2 ...
+Getting scm site credentials for zip deployment
+Starting zip deployment. This operation can take a while to complete ...
+Deployment endpoint responded with status code 202
+You can launch the app at http://azure-devops-p2.azurewebsites.net
+Setting 'az webapp up' default arguments for current directory. Manage defaults with 'az configure --scope local'
+--resource-group/-g default: thanhbao0390_rg_2849
+--sku default: P1v2
+--plan/-p default: thanhbao0390_asp_2366
+--location/-l default: centralus
+--name/-n default: azure-devops-p2
+{
+  "URL": "http://azure-devops-p2.azurewebsites.net",
+  "appserviceplan": "thanhbao0390_asp_2366",
+  "location": "centralus",
+  "name": "azure-devops-p2",
+  "os": "Linux",
+  "resourcegroup": "thanhbao0390_rg_2849",
+  "runtime_version": "python|3.10",
+  "runtime_version_detected": "-",
+  "sku": "PREMIUMV2",
+  "src_path": "//home//bao//azure-devops-p2"
+}
+(.flask-ml-azure) bao [ ~/azure-devops-p2 ]$ 
