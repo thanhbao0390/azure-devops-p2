@@ -1,0 +1,1 @@
+az webapp config set --resource-group thanhbao0390_rg_2849 --name azure-devops-p2 --linux-fx-version "PYTHON|3.7"
