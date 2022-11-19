@@ -1,0 +1,1 @@
+az webapp up --runtime "PYTHON:3.7" -n azure-devops-p2
