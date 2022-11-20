@@ -61,6 +61,7 @@ def predict():
     # scale the input
     scaled_payload = scale(inference_payload)
     # get an output prediction from the pretrained model, clf
+    clf = joblib.load("boston_housing_prediction.joblib")
     prediction = list(clf.predict(scaled_payload))
     ## TO DO:  Log the output prediction value
     LOG.info(f"prediction output: \n{prediction}")
