@@ -1,13 +1,13 @@
 1. Set up virtualenv:
 python3 -m venv ~/.flask-ml-azure
-source ~/.flask-ml-azure/bin/activate
+source C:/BaoNT1/Azure/devops/.flask-ml-azure/bin/activate
 2. Run make install
 3. Create an app service and initially deploy your app in Cloud Shell:
 az webapp up -n <your-appservice>
 
-az webapp up --runtime "PYTHON:3.7" -n azure-devops-p2
+az webapp up --runtime PYTHON:3.7 --sku B1 --logs -n azure-devops-p2 
 az webapp config show --resource-group thanhbao0390_rg_2849 --name azure-devops-p2 --query linuxFxVersion
-az webapp config set --resource-group thanhbao0390_rg_2849 --name azure-devops-p2 --linux-fx-version "PYTHON|3.7"
+az webapp config set --resource-group thanhbao0390_rg_2849 --name azure-devops-p2 --linux-fx-version "PYTHON:3.7"
 
 
 Create an app service and initially deploy your app in Cloud Shell
