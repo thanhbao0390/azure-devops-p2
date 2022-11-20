@@ -1,51 +1,40 @@
-# Overview
+[![CircleCI](https://circleci.com/gh/thanhbao0390/project-ml-microservice-kubernetes.svg?style=svg)](https://circleci.com/gh/thanhbao0390/project-ml-microservice-kubernetes)
 
-<TODO: complete this with an overview of your project>
+## Project Overview
 
-## Project Plan
-<TODO: Project Plan
+In this project, you will apply the skills you have acquired in this course to operationalize a Machine Learning Microservice API. 
 
-* A link to a Trello board for the project
-* A link to a spreadsheet that includes the original and final project plan>
+You are given a pre-trained, `sklearn` model that has been trained to predict housing prices in Boston according to several features, such as average rooms in a home and data about highway access, teacher-to-pupil ratios, and so on. You can read more about the data, which was initially taken from Kaggle, on [the data source site](https://www.kaggle.com/c/boston-housing). This project tests your ability to operationalize a Python flask app—in a provided file, `app.py`—that serves out predictions (inference) about housing prices through API calls. This project could be extended to any pre-trained machine learning model, such as those for image recognition and data labeling.
 
-## Instructions
+## Setup the Environment
 
-<TODO:  
-* Architectural Diagram (Shows how key parts of the system work)>
-
-<TODO:  Instructions for running the Python project.  How could a user with no context run this project without asking you for any help.  Include screenshots with explicit steps to create that work. Be sure to at least include the following screenshots:
-
-* Project running on Azure App Service
-
-* Project cloned into Azure Cloud Shell
-
-* Passing tests that are displayed after running the `make all` command from the `Makefile`
-
-* Output of a test run
-
-* Successful deploy of the project in Azure Pipelines.  [Note the official documentation should be referred to and double checked as you setup CI/CD](https://docs.microsoft.com/en-us/azure/devops/pipelines/ecosystems/python-webapp?view=azure-devops).
-
-* Running Azure App Service from Azure Pipelines automatic deployment
-
-* Successful prediction from deployed flask app in Azure Cloud Shell.  [Use this file as a template for the deployed prediction](https://github.com/udacity/nd082-Azure-Cloud-DevOps-Starter-Code/blob/master/C2-AgileDevelopmentwithAzure/project/starter_files/flask-sklearn/make_predict_azure_app.sh).
-The output should look similar to this:
-
+* Create a virtualenv with Python 3.7 and activate it. Refer to this link for help on specifying the Python version in the virtualenv. 
 ```bash
-udacity@Azure:~$ ./make_predict_azure_app.sh
-Port: 443
-{"prediction":[20.35373177134412]}
+python3 -m pip install --user virtualenv 
+# You should have Python 3.7 available in your host. 
+# Check the Python path using `which python3`
+# Use a command similar to this one:
+python3 -m virtualenv --python=<path-to-Python3.7> .devops
+source .devops/bin/activate
 ```
+* Run `make install` to install the necessary dependencies
 
-* Output of streamed log files from deployed application
+### Running `app.py`
 
-> 
+1. Standalone:  `python app.py`
+2. Run in Docker:  `./run_docker.sh`
+3. Run in Kubernetes:  `./run_kubernetes.sh`
 
-## Enhancements
+### Kubernetes Steps
 
-<TODO: A short description of how to improve the project in the future>
-
-## Demo 
-
-<TODO: Add link Screencast on YouTube>
-
-
+* Setup and Configure Docker locally
+    Install docker and create docker hub account
+* Setup and Configure Kubernetes locally
+    Install a virtual machine like VirtualBox and minikube
+    Start a local cluster: minikube start --ignore-preflight-errors=all
+* Create Flask app in Container
+    Build image and add a descriptive tag: docker build --tag=p4baont1app .
+    Upload docker image: ./upload_docker.sh where your docker id should be used
+* Run via kubectl
+    Run in Kubernetes: ./run_kubernetes.sh where dockerpath should be same name as defined above
+    Make prediction using second terminal: ./make_prediction.sh

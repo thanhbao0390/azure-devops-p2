@@ -1,10 +1,15 @@
 #!/usr/bin/env bash
 
-# Build image
-docker build --tag=flasksklearn .
+## Complete the following steps to get Docker running locally
 
+# Step 1:
+# Build image and add a descriptive tag
+docker build --tag=p4baont1app .
+
+# Step 2: 
 # List docker images
 docker image ls
 
+# Step 3: 
 # Run flask app
-docker run -p 8000:80 flasksklearn
+docker run -p 8000:80 p4baont1app
