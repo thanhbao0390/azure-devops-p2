@@ -67,6 +67,7 @@ Port: 443
 
 * Instead of using GitHub Actions for CI in the future this could be changed so that the Azure Pipelines execute both Continuous Integration and Continuous Delivery
 in one cloud environment
+![alt text](https://github.com/thanhbao0390/azure-devops-p2/blob/main/screenshort/AzureCDApp.png)
 
 ## Demo 
 [Demo](https://azure-devops-p2.azurewebsites.net/)
